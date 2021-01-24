@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>CarCount</title>
+    <style>
+        table th, table td {
+            padding: 5px;
+        }
+
+        .row {
+            font-style: italic;
+        }
+
+        .even-row {
+            color: black;
+        }
+
+        .odd-row {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+<table border="1">
+    <tr>
+        <th>No</th>
+        <th>ModelCar</th>
+        <th>ColorCar</th>
+        <th>Year of release</th>
+    </tr>
+
+    <tr th:each="car, state : ${carsList}"
+        class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+
+        <td th:utext="${state.count}">No</td>
+        <td th:utext="${car.getModelCar()}">ModelCar</td>
+        <td th:utext="${car.getColorCar()}">ColorCar</td>
+        <td th:utext="${car.getYear()}">Year of release</td>
+
+    </tr>
+
+</table>
+</body>
+</html>
